@@ -21,11 +21,19 @@ file(GLOB IMGUI_SOURCES
         ${IMGUI_PATH}/imgui_impl_glfw.cpp
         ${IMGUI_PATH}/imgui_impl_opengl3.cpp
         ${IMGUI_PATH}/imconfig.h
+)
 
+# === ImPlot Setup ===
+set(IMPLOT_PATH "${CMAKE_SOURCE_DIR}/libs/implot")
+include_directories(${IMPLOT_PATH})
+
+file(GLOB IMPLOT_SOURCES
+        ${IMPLOT_PATH}/implot.cpp
+        ${IMPLOT_PATH}/implot_items.cpp
 )
 
 # Add executable
-add_executable(TradingSimulator main.cpp ${IMGUI_SOURCES})
+add_executable(TradingSimulator main.cpp ${IMGUI_SOURCES} ${IMPLOT_SOURCES})
 
 # Link libraries
 target_link_libraries(TradingSimulator
