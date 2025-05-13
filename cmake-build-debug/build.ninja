@@ -112,6 +112,48 @@ build CMakeFiles/TradingSimulator.dir/libs/implot/implot_items.cpp.o: CXX_COMPIL
   OBJECT_DIR = CMakeFiles/TradingSimulator.dir
   OBJECT_FILE_DIR = CMakeFiles/TradingSimulator.dir/libs/implot
 
+build CMakeFiles/TradingSimulator.dir/src/engine/trading_engine.cpp.o: CXX_COMPILER__TradingSimulator_unscanned_Debug /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/engine/trading_engine.cpp || cmake_object_order_depends_target_TradingSimulator
+  DEP_FILE = CMakeFiles/TradingSimulator.dir/src/engine/trading_engine.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.7 -fcolor-diagnostics
+  INCLUDES = -I/usr/local/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks
+  OBJECT_DIR = CMakeFiles/TradingSimulator.dir
+  OBJECT_FILE_DIR = CMakeFiles/TradingSimulator.dir/src/engine
+
+build CMakeFiles/TradingSimulator.dir/src/graph/graph_plotter.cpp.o: CXX_COMPILER__TradingSimulator_unscanned_Debug /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/graph/graph_plotter.cpp || cmake_object_order_depends_target_TradingSimulator
+  DEP_FILE = CMakeFiles/TradingSimulator.dir/src/graph/graph_plotter.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.7 -fcolor-diagnostics
+  INCLUDES = -I/usr/local/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks
+  OBJECT_DIR = CMakeFiles/TradingSimulator.dir
+  OBJECT_FILE_DIR = CMakeFiles/TradingSimulator.dir/src/graph
+
+build CMakeFiles/TradingSimulator.dir/src/integration/api.cpp.o: CXX_COMPILER__TradingSimulator_unscanned_Debug /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/integration/api.cpp || cmake_object_order_depends_target_TradingSimulator
+  DEP_FILE = CMakeFiles/TradingSimulator.dir/src/integration/api.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.7 -fcolor-diagnostics
+  INCLUDES = -I/usr/local/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks
+  OBJECT_DIR = CMakeFiles/TradingSimulator.dir
+  OBJECT_FILE_DIR = CMakeFiles/TradingSimulator.dir/src/integration
+
+build CMakeFiles/TradingSimulator.dir/src/portfolio/portfolio.cpp.o: CXX_COMPILER__TradingSimulator_unscanned_Debug /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/portfolio/portfolio.cpp || cmake_object_order_depends_target_TradingSimulator
+  DEP_FILE = CMakeFiles/TradingSimulator.dir/src/portfolio/portfolio.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.7 -fcolor-diagnostics
+  INCLUDES = -I/usr/local/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks
+  OBJECT_DIR = CMakeFiles/TradingSimulator.dir
+  OBJECT_FILE_DIR = CMakeFiles/TradingSimulator.dir/src/portfolio
+
+build CMakeFiles/TradingSimulator.dir/src/ui/ui_manager.cpp.o: CXX_COMPILER__TradingSimulator_unscanned_Debug /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/ui/ui_manager.cpp || cmake_object_order_depends_target_TradingSimulator
+  DEP_FILE = CMakeFiles/TradingSimulator.dir/src/ui/ui_manager.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.7 -fcolor-diagnostics
+  INCLUDES = -I/usr/local/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks
+  OBJECT_DIR = CMakeFiles/TradingSimulator.dir
+  OBJECT_FILE_DIR = CMakeFiles/TradingSimulator.dir/src/ui
+
+build CMakeFiles/TradingSimulator.dir/src/user/user_profile.cpp.o: CXX_COMPILER__TradingSimulator_unscanned_Debug /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/user/user_profile.cpp || cmake_object_order_depends_target_TradingSimulator
+  DEP_FILE = CMakeFiles/TradingSimulator.dir/src/user/user_profile.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.7 -fcolor-diagnostics
+  INCLUDES = -I/usr/local/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks
+  OBJECT_DIR = CMakeFiles/TradingSimulator.dir
+  OBJECT_FILE_DIR = CMakeFiles/TradingSimulator.dir/src/user
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target TradingSimulator
@@ -120,7 +162,7 @@ build CMakeFiles/TradingSimulator.dir/libs/implot/implot_items.cpp.o: CXX_COMPIL
 #############################################
 # Link the executable TradingSimulator
 
-build TradingSimulator: CXX_EXECUTABLE_LINKER__TradingSimulator_Debug CMakeFiles/TradingSimulator.dir/main.cpp.o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui.cpp.o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_draw.cpp.o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_impl_glfw.cpp.o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_impl_opengl3.cpp.o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_tables.cpp.o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_widgets.cpp.o CMakeFiles/TradingSimulator.dir/libs/implot/implot.cpp.o CMakeFiles/TradingSimulator.dir/libs/implot/implot_items.cpp.o | /usr/local/lib/libglfw.3.dylib
+build TradingSimulator: CXX_EXECUTABLE_LINKER__TradingSimulator_Debug CMakeFiles/TradingSimulator.dir/main.cpp.o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui.cpp.o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_draw.cpp.o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_impl_glfw.cpp.o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_impl_opengl3.cpp.o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_tables.cpp.o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_widgets.cpp.o CMakeFiles/TradingSimulator.dir/libs/implot/implot.cpp.o CMakeFiles/TradingSimulator.dir/libs/implot/implot_items.cpp.o CMakeFiles/TradingSimulator.dir/src/engine/trading_engine.cpp.o CMakeFiles/TradingSimulator.dir/src/graph/graph_plotter.cpp.o CMakeFiles/TradingSimulator.dir/src/integration/api.cpp.o CMakeFiles/TradingSimulator.dir/src/portfolio/portfolio.cpp.o CMakeFiles/TradingSimulator.dir/src/ui/ui_manager.cpp.o CMakeFiles/TradingSimulator.dir/src/user/user_profile.cpp.o | /usr/local/lib/libglfw.3.dylib
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -mmacosx-version-min=13.7
   LINK_LIBRARIES = -Wl,-rpath,/usr/local/lib  -framework OpenGL  /usr/local/lib/libglfw.3.dylib  -framework Cocoa  -framework IOKit  -framework CoreVideo
   LINK_PATH = -L/usr/local/lib

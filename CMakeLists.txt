@@ -33,7 +33,19 @@ file(GLOB IMPLOT_SOURCES
 )
 
 # Add executable
-add_executable(TradingSimulator main.cpp ${IMGUI_SOURCES} ${IMPLOT_SOURCES})
+add_executable(TradingSimulator main.cpp ${IMGUI_SOURCES} ${IMPLOT_SOURCES}
+        src/engine/trading_engine.cpp
+        src/engine/trading_engine.h
+        src/graph/graph_plotter.cpp
+        src/graph/graph_plotter.h
+        src/integration/api.cpp
+        src/integration/api.h
+        src/portfolio/portfolio.cpp
+        src/portfolio/portfolio.h
+        src/ui/ui_manager.cpp
+        src/ui/ui+manager.h
+        src/user/user_profile.cpp
+        src/user/user_profile.h)
 
 # Link libraries
 target_link_libraries(TradingSimulator

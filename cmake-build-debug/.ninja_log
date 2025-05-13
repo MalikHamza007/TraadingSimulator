@@ -1,21 +1,12 @@
 # ninja log v6
 306	3255	1747012497871457921	CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_draw.cpp.o	26a0ba5a354c50ef
-5	776	1747012646703212430	build.ninja	e69e093c3f61cf8
+5	776	1747099326825391896	build.ninja	e69e093c3f61cf8
 3843	5892	1747012501408808970	CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_tables.cpp.o	20699015558041f0
-302	3544	1747012497868277027	CMakeFiles/TradingSimulator.dir/main.cpp.o	d582d2f3329d0cbc
+59	1454	1747013628948691156	CMakeFiles/TradingSimulator.dir/main.cpp.o	d582d2f3329d0cbc
 5042	6747	1747012502607437784	CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_widgets.cpp.o	f1115081ac101d9a
 304	5041	1747012497870145999	CMakeFiles/TradingSimulator.dir/libs/imgui/imgui.cpp.o	596b1bb2d4bfe9d3
 3255	5720	1747012500820916672	CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_impl_glfw.cpp.o	c40408b579401abb
 3553	3843	1747012501119621849	CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_impl_opengl3.cpp.o	db680036e6b01cba
-3683	5018	1746584141873319651	TradingSimulator	d84faa44cc70a196
-269	1697	1747012705267450290	CMakeFiles/TradingSimulator.dir/libs/implot/implot.cpp.o	6eaeb1de382ecf38
 270	8206	1747012705268331046	CMakeFiles/TradingSimulator.dir/libs/implot/implot_items.cpp.o	5607f8d9016c0f8
-8207	8585	1747012713204842510	TradingSimulator	a4dc58a6b2d1db41
-333	1896	1747013102061028260	CMakeFiles/TradingSimulator.dir/main.cpp.o	d582d2f3329d0cbc
-1897	2273	1747013103625373306	TradingSimulator	a4dc58a6b2d1db41
-221	3385	1747013258495099695	CMakeFiles/TradingSimulator.dir/main.cpp.o	d582d2f3329d0cbc
-3386	3965	1747013261659754428	TradingSimulator	a4dc58a6b2d1db41
-127	2579	1747013606634862897	CMakeFiles/TradingSimulator.dir/main.cpp.o	d582d2f3329d0cbc
-2580	3035	1747013609088148503	TradingSimulator	a4dc58a6b2d1db41
-59	1454	1747013628948691156	CMakeFiles/TradingSimulator.dir/main.cpp.o	d582d2f3329d0cbc
 1456	1886	1747013630345607208	TradingSimulator	a4dc58a6b2d1db41
+269	1697	1747012705267450290	CMakeFiles/TradingSimulator.dir/libs/implot/implot.cpp.o	6eaeb1de382ecf38
