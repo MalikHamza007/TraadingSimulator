@@ -1,0 +1,3 @@
+/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build/CMakeFiles/TradingSimulator.dir
+/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build/CMakeFiles/edit_cache.dir
+/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build/CMakeFiles/rebuild_cache.dir

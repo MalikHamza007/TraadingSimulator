@@ -1,0 +1,2 @@
+uid1234,hamza@gmail.com,12345678,9500.0
+uid5678,ali@gmail.com,abcdef,12000.0

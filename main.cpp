@@ -1,13 +1,20 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <cstdlib>
-#include <ctime>
+#include <algorithm>
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 #include <implot.h>
 #include <GLFW/glfw3.h>
+#include <nlohmann/json.hpp>
+#include "src/integration/api.h"
+#include <cmath>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+using json = nlohmann::json;
 
 struct OHLC {
     double open;
@@ -15,15 +22,23 @@ struct OHLC {
     double low;
     double close;
     double time;
+    string datetime; // Store datetime for deduplication
 };
 
-int main() {
-    // Seed random number generator
-    std::srand(static_cast<unsigned>(std::time(nullptr)));
+void DrawSpinner(const char* label, float radius, float thickness, const ImU32& color) {
+    ImGui::PushID(label);
+    ImVec2 pos = ImGui::GetCursorScreenPos();
+    float time = static_cast<float>(glfwGetTime());
+    int segments = 12;
+    ImGui::GetWindowDrawList()->AddCircle(pos, radius, color, segments, thickness);
+    ImGui::Dummy(ImVec2(radius * 2, radius * 2));
+    ImGui::PopID();
+}
 
+int main() {
     // Initialize GLFW
     if (!glfwInit()) {
-        std::cerr << "Failed to initialize GLFW" << std::endl;
+        cerr << "Failed to initialize GLFW" << endl;
         return -1;
     }
 
@@ -32,16 +47,15 @@ int main() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-    // Create a windowed mode window and its OpenGL context
+    // Create window
     GLFWwindow* window = glfwCreateWindow(1280, 720, "Trading Simulator", nullptr, nullptr);
     if (!window) {
-        std::cerr << "Failed to create GLFW window" << std::endl;
+        cerr << "Failed to create GLFW window" << endl;
         glfwTerminate();
         return -1;
     }
     glfwMakeContextCurrent(window);
-    const GLubyte* version = glGetString(GL_VERSION);
-    std::cout << "OpenGL Version: " << version << std::endl;
+    cout << "OpenGL Version: " << glGetString(GL_VERSION) << endl;
 
     glfwSwapInterval(1); // Enable vsync
 
@@ -51,71 +65,119 @@ int main() {
     ImPlot::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-
-    // Setup Dear ImGui style
     ImGui::StyleColorsDark();
-
-    // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 330");
 
     // Trading simulator state
-    float stock_price = 100.0f;
     float cash_balance = 10000.0f;
     int shares_owned = 0;
-    std::vector<std::string> transaction_log;
-    std::vector<OHLC> price_history;
-    double current_time = 0.0;
-    float open_price = stock_price;
-    float high_price = stock_price;
-    float low_price = stock_price;
-    int tick_count = 0;
-    const int ticks_per_candle = 60; // Number of ticks per candlestick
+    vector<string> transaction_log;
+    vector<OHLC> price_history;
+    string selected_stock = "AAPL";
+    vector<string> stocks = {"AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"};
+    bool fetch_data = true; // Trigger initial fetch
+    bool is_loading = false;
+    int api_call_count = 0;
+    double last_fetch_time = glfwGetTime();
+    const double fetch_interval = 60.0; // Fetch every 60 seconds (1 minute)
+    string last_datetime;
 
     // Main loop
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
-
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        // Update stock price
-        stock_price += (std::rand() % 100 - 50) / 100.0f;
-        if (stock_price < 10.0f) stock_price = 10.0f;
+        // Periodic data fetch
+        double current_time = glfwGetTime();
+        if (current_time - last_fetch_time >= fetch_interval) {
+            fetch_data = true;
+        }
 
-        // Update high and low for the current candlestick
-        high_price = std::max(high_price, stock_price);
-        low_price = std::min(low_price, stock_price);
+        // Fetch stock data when needed
+        if (fetch_data && !is_loading) {
+            is_loading = true;
+            string response = fetchStockData(selected_stock);
+            try {
+                json j = json::parse(response);
+                if (j.contains("values") && j["values"].is_array()) {
+                    vector<OHLC> new_candles;
+                    double time = price_history.empty() ? 0.0 : price_history.back().time + 1.0;
 
-        // Increment tick count and time
-        tick_count++;
-        current_time += 1.0;
+                    // Process candles in reverse order (oldest to newest)
+                    for (auto it = j["values"].rbegin(); it != j["values"].rend(); ++it) {
+                        const auto& value = *it;
+                        string datetime = value["datetime"].get<string>();
+                        cout << "Processing candle with datetime: " << datetime << ", last_datetime: " << last_datetime << endl;
 
-        // Create a new candlestick every ticks_per_candle ticks
-        if (tick_count >= ticks_per_candle) {
-            OHLC candle;
-            candle.open = open_price;
-            candle.high = high_price;
-            candle.low = low_price;
-            candle.close = stock_price;
-            candle.time = current_time / ticks_per_candle;
-            price_history.push_back(candle);
+                        if (!last_datetime.empty() && datetime <= last_datetime) {
+                            cout << "Skipping duplicate or older candle: " << datetime << endl;
+                            continue; // Skip duplicates or older data
+                        }
 
-            // Reset for next candlestick
-            open_price = stock_price;
-            high_price = stock_price;
-            low_price = stock_price;
-            tick_count = 0;
+                        OHLC candle;
+                        candle.open = stod(value["open"].get<string>());
+                        candle.high = stod(value["high"].get<string>());
+                        candle.low = stod(value["low"].get<string>());
+                        candle.close = stod(value["close"].get<string>());
+                        candle.time = time++;
+                        candle.datetime = datetime;
+                        new_candles.push_back(candle);
+                        last_datetime = datetime;
+                        cout << "Added candle with datetime: " << datetime << ", new_candles size: " << new_candles.size() << endl;
+                    }
 
-            // Limit history to 100 candles to prevent memory issues
-            if (price_history.size() > 100) {
-                price_history.erase(price_history.begin());
+                    if (!new_candles.empty()) {
+                        // Append new candles to price_history
+                        price_history.insert(price_history.end(), new_candles.begin(), new_candles.end());
+                        api_call_count++;
+                    }
+
+                    // Limit history to 100 candles
+                    if (price_history.size() > 100) {
+                        price_history.erase(price_history.begin(), price_history.begin() + (price_history.size() - 100));
+                        cout << "Trimmed price_history to 100 candles, new size: " << price_history.size() << endl;
+                    }
+                } else {
+                    cerr << "Invalid API response format" << endl;
+                }
+            } catch (const exception& e) {
+                cerr << "JSON parse error: " << e.what() << endl;
             }
+            is_loading = false;
+            fetch_data = false;
+            last_fetch_time = current_time;
         }
 
         // Trading Simulator Window
         ImGui::Begin("Trading Simulator", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
+
+        // Stock selector
+        ImGui::Text("Select Stock:");
+        for (const auto& stock : stocks) {
+            if (ImGui::Button(stock.c_str()) && stock != selected_stock) {
+                selected_stock = stock;
+                fetch_data = true;
+                last_datetime.clear();
+                cout << "Switched to stock: " << selected_stock << endl;
+            }
+            ImGui::SameLine();
+        }
+        ImGui::NewLine();
+
+        // Loading indicator
+        if (is_loading) {
+            ImGui::Text("Wait new Stock Loading...");
+            DrawSpinner("Spinner", 10.0f, 2.0f, ImGui::GetColorU32(ImGuiCol_Button));
+
+        }
+
+        // API call count
+        ImGui::Text("API Calls: %d", api_call_count);
+
+        float stock_price = price_history.empty() ? 100.0f : price_history.back().close;
         ImGui::Text("Stock Price: $%.2f", stock_price);
         ImGui::Separator();
 
@@ -124,7 +186,7 @@ int main() {
             if (cash_balance >= stock_price) {
                 cash_balance -= stock_price;
                 shares_owned++;
-                transaction_log.push_back("Bought 1 share at $" + std::to_string(stock_price));
+                transaction_log.push_back("Bought 1 share of " + selected_stock + " at $" + to_string(stock_price));
             }
         }
         ImGui::SameLine();
@@ -132,7 +194,7 @@ int main() {
             if (shares_owned > 0) {
                 cash_balance += stock_price;
                 shares_owned--;
-                transaction_log.push_back("Sold 1 share at $" + std::to_string(stock_price));
+                transaction_log.push_back("Sold 1 share of " + selected_stock + " at $" + to_string(stock_price));
             }
         }
 
@@ -154,104 +216,71 @@ int main() {
 
         // Candlestick Chart Window
         ImGui::Begin("Stock Price Chart", nullptr, ImGuiWindowFlags_AlwaysAutoResize);
-        if (ImPlot::BeginPlot("Candlestick Chart", ImVec2(600, 400))) {
-            ImPlot::SetupAxes("Time", "Price");
-            double x_max = (current_time / ticks_per_candle) + 1; // Extend x-axis to show current candle
-            double x_min = x_max - 50; // Show last 50 candles
-            ImPlot::SetupAxisLimits(ImAxis_X1, x_min, x_max, ImGuiCond_Always);
+        // if (is_loading) {
+        //     ImGui::Text("Loading chart...");
+        //     DrawSpinner("ChartSpinner", 15.0f, 3.0f, ImGui::GetColorU32(ImGuiCol_Button));
+        // } else if (ImPlot::BeginPlot("Candlestick Chart", ImVec2(600, 400))) {
+        //     ImPlot::SetupAxes("Time", "Price");
+            if (ImPlot::BeginPlot("Candle Stick Chart", ImVec2(600, 400))) {
+    ImPlot::SetupAxes("Time", "Price");
 
-            // Dynamic y-axis limits based on price history
-            double y_min = 99999, y_max = -99999;
-            for (const auto& candle : price_history) {
-                y_min = std::min(y_min, candle.low);
-                y_max = std::max(y_max, candle.high);
-            }
-            // Include current candle's high/low
-            y_min = std::min(y_min, static_cast<double>(low_price));
-            y_max = std::max(y_max, static_cast<double>(high_price));
-            // Add padding to y-axis
-            double y_range = y_max - y_min;
-            y_min -= y_range * 0.1;
-            y_max += y_range * 0.1;
-            ImPlot::SetupAxisLimits(ImAxis_Y1, y_min, y_max, ImGuiCond_Always);
+    // Ensure at least 30 units of x-axis for visibility
+    double x_max = price_history.empty() ? 30.0 : price_history.back().time + 1;
+    double x_min = price_history.empty() ? 0.0 : max(0.0, x_max - 50);
+    ImPlot::SetupAxisLimits(ImAxis_X1, x_min, x_max, ImGuiCond_Always);
 
-            // Plot completed candlesticks
-            if (!price_history.empty()) {
-                // Prepare arrays for plotting
-                std::vector<double> times(price_history.size());
-                std::vector<double> opens(price_history.size());
-                std::vector<double> closes(price_history.size());
-                std::vector<double> highs(price_history.size());
-                std::vector<double> lows(price_history.size());
+    double y_min = 99999, y_max = -99999;
+    for (const auto& candle : price_history) {
+        y_min = min(y_min, candle.low);
+        y_max = max(y_max, candle.high);
+    }
+    if (!price_history.empty()) {
+        double y_range = y_max - y_min;
+        y_min -= y_range * 0.1;
+        y_max += y_range * 0.1;
+        ImPlot::SetupAxisLimits(ImAxis_Y1, y_min, y_max, ImGuiCond_Always);
 
-                for (size_t i = 0; i < price_history.size(); ++i) {
-                    times[i] = price_history[i].time;
-                    opens[i] = price_history[i].open;
-                    closes[i] = price_history[i].close;
-                    highs[i] = price_history[i].high;
-                    lows[i] = price_history[i].low;
-                }
+        vector<double> times(price_history.size());
+        vector<double> opens(price_history.size());
+        vector<double> closes(price_history.size());
+        vector<double> highs(price_history.size());
+        vector<double> lows(price_history.size());
 
-                // Plot candlestick bodies (open to close) using PlotBars
-                for (size_t i = 0; i < price_history.size(); ++i) {
-                    double bottom = std::min(opens[i], closes[i]);
-                    double height = std::abs(closes[i] - opens[i]);
-                    double x = times[i];
-                    ImVec4 color = closes[i] >= opens[i] ? ImVec4(0, 1, 0, 1) : ImVec4(1, 0, 0, 1); // Green for up, red for down
-
-                    // Push color for this candle
-                    ImPlot::PushStyleColor(ImPlotCol_Fill, color);
-                    ImPlot::PushStyleColor(ImPlotCol_Line, color);
-
-                    // Plot the body as a bar with increased width (from 0.4 to 0.6)
-                    ImPlot::PlotBars(("CandleBody" + std::to_string(i)).c_str(), &x, &height, 1, 0.6, ImPlotBarsFlags_Horizontal, 0, sizeof(double));
-                    ImPlot::SetNextMarkerStyle(ImPlotMarker_Square, 0, color);
-                    ImPlot::PlotScatter(("CandleBottom" + std::to_string(i)).c_str(), &x, &bottom, 1);
-
-                    // Pop colors
-                    ImPlot::PopStyleColor(2);
-                }
-
-                // Plot wicks (high to low) using PlotLines with increased thickness
-                for (size_t i = 0; i < price_history.size(); ++i) {
-                    double x[2] = {times[i], times[i]};
-                    double y[2] = {lows[i], highs[i]};
-                    ImPlot::PushStyleVar(ImPlotStyleVar_LineWeight, 2.0f); // Increase wick thickness
-                    ImPlot::PushStyleColor(ImPlotCol_Line, ImVec4(1, 1, 1, 1)); // White wicks
-                    ImPlot::PlotLine(("CandleWick" + std::to_string(i)).c_str(), x, y, 2);
-                    ImPlot::PopStyleColor();
-                    ImPlot::PopStyleVar();
-                }
-            }
-
-            // Plot the current, incomplete candlestick
-            if (tick_count > 0) {
-                double current_candle_time = current_time / ticks_per_candle;
-                double bottom = std::min(static_cast<double>(open_price), static_cast<double>(stock_price));
-                double height = std::abs(static_cast<double>(stock_price) - static_cast<double>(open_price));
-                double x = current_candle_time;
-                ImVec4 color = stock_price >= open_price ? ImVec4(0, 1, 0, 1) : ImVec4(1, 0, 0, 1);
-
-                // Plot current candlestick body
-                ImPlot::PushStyleColor(ImPlotCol_Fill, color);
-                ImPlot::PushStyleColor(ImPlotCol_Line, color);
-                ImPlot::PlotBars("CurrentCandleBody", &x, &height, 1, 0.6, ImPlotBarsFlags_Horizontal, 0, sizeof(double));
-                ImPlot::SetNextMarkerStyle(ImPlotMarker_Square, 0, color);
-                ImPlot::PlotScatter("CurrentCandleBottom", &x, &bottom, 1);
-                ImPlot::PopStyleColor(2);
-
-                // Plot current candlestick wick
-                double x_wick[2] = {current_candle_time, current_candle_time};
-                double y_wick[2] = {static_cast<double>(low_price), static_cast<double>(high_price)};
-                ImPlot::PushStyleVar(ImPlotStyleVar_LineWeight, 2.0f);
-                ImPlot::PushStyleColor(ImPlotCol_Line, ImVec4(1, 1, 1, 1));
-                ImPlot::PlotLine("CurrentCandleWick", x_wick, y_wick, 2);
-                ImPlot::PopStyleColor();
-                ImPlot::PopStyleVar();
-            }
-
-            ImPlot::EndPlot();
+        for (size_t i = 0; i < price_history.size(); ++i) {
+            times[i] = price_history[i].time;
+            opens[i] = price_history[i].open;
+            closes[i] = price_history[i].close;
+            highs[i] = price_history[i].high;
+            lows[i] = price_history[i].low;
         }
+
+        for (size_t i = 0; i < price_history.size(); ++i) {
+            double bottom = min(opens[i], closes[i]);
+            double height = abs(closes[i] - opens[i]);
+            double x = times[i];
+            ImVec4 color = closes[i] >= opens[i] ? ImVec4(0, 1, 0, 1) : ImVec4(1, 0, 0, 1);
+
+            ImPlot::PushStyleColor(ImPlotCol_Fill, color);
+            ImPlot::PushStyleColor(ImPlotCol_Line, color);
+            ImPlot::PlotBars(("CandleBody" + to_string(i)).c_str(), &x, &height, 1, 0.6, ImPlotBarsFlags_Horizontal, 0, sizeof(double));
+            ImPlot::SetNextMarkerStyle(ImPlotMarker_Square, 0, color);
+            ImPlot::PlotScatter(("CandleBottom" + to_string(i)).c_str(), &x, &bottom, 1);
+            ImPlot::PopStyleColor(2);
+
+            double x_wick[2] = {times[i], times[i]};
+            double y_wick[2] = {lows[i], highs[i]};
+            ImPlot::PushStyleVar(ImPlotStyleVar_LineWeight, 2.0f);
+            ImPlot::PushStyleColor(ImPlotCol_Line, ImVec4(1, 1, 1, 1));
+            ImPlot::PlotLine(("CandleWick" + to_string(i)).c_str(), x_wick, y_wick, 2);
+            ImPlot::PopStyleColor();
+            ImPlot::PopStyleVar();
+        }
+    } else {
+        ImGui::Text("No data available. Market may be closed or data fetch failed.");
+    }
+
+    ImPlot::EndPlot();
+}
         ImGui::End();
 
         ImGui::Render();

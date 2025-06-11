@@ -1,0 +1,92 @@
+[
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/main.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/main.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/main.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui/imgui.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui/imgui.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/libs/imgui/imgui.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_draw.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui/imgui_draw.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui/imgui_draw.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_draw.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_impl_glfw.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui/imgui_impl_glfw.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui/imgui_impl_glfw.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_impl_glfw.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_impl_opengl3.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui/imgui_impl_opengl3.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui/imgui_impl_opengl3.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_impl_opengl3.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_tables.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui/imgui_tables.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui/imgui_tables.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_tables.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_widgets.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui/imgui_widgets.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui/imgui_widgets.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/libs/imgui/imgui_widgets.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/libs/implot/implot.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot/implot.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot/implot.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/libs/implot/implot.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/libs/implot/implot_items.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot/implot_items.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot/implot_items.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/libs/implot/implot_items.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/src/engine/trading_engine.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/engine/trading_engine.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/engine/trading_engine.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/src/engine/trading_engine.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/src/graph/graph_plotter.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/graph/graph_plotter.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/graph/graph_plotter.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/src/graph/graph_plotter.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/src/integration/api.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/integration/api.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/integration/api.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/src/integration/api.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/src/portfolio/portfolio.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/portfolio/portfolio.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/portfolio/portfolio.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/src/portfolio/portfolio.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/src/ui/ui_manager.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/ui/ui_manager.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/ui/ui_manager.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/src/ui/ui_manager.cpp.o"
+},
+{
+  "directory": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/build",
+  "command": "/usr/bin/clang++ -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/imgui -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/implot -I/usr/local/opt/curl/include -I/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/libs/json/include -F/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -g -std=gnu++17 -o CMakeFiles/TradingSimulator.dir/src/user/user_profile.cpp.o -c /Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/user/user_profile.cpp",
+  "file": "/Users/shazaibmalikl2e/Desktop/hamza/TradingSimulator/src/user/user_profile.cpp",
+  "output": "CMakeFiles/TradingSimulator.dir/src/user/user_profile.cpp.o"
+}
+]

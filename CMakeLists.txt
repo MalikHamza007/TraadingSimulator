@@ -47,10 +47,20 @@ add_executable(TradingSimulator main.cpp ${IMGUI_SOURCES} ${IMPLOT_SOURCES}
         src/user/user_profile.cpp
         src/user/user_profile.h)
 
+# Manually set curl paths (for Intel macOS with Homebrew)
+set(CURL_INCLUDE_DIR "/usr/local/opt/curl/include")
+set(CURL_LIBRARY "/usr/local/opt/curl/lib/libcurl.dylib")
+
+include_directories(${CURL_INCLUDE_DIR})
+# Include nlohmann/json
+include_directories(${CMAKE_SOURCE_DIR}/libs/json/include)
+
 # Link libraries
 target_link_libraries(TradingSimulator
         ${OPENGL_LIBRARIES}
         /usr/local/lib/libglfw.3.dylib
+        ${CURL_LIBRARY}
+
 )
 
 # macOS-specific frameworks
